@@ -6,7 +6,7 @@ header {
 }
 .hero-image {
   position: absolute;
-  border-radius: 30px;
+  border-radius: 48px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -27,34 +27,32 @@ header {
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin: 30px;
+  padding: 24px;
 }
 .navbar a {
   font-family: Alata;
   font-size: 24px;
   color: #fff;
+  text-decoration: unset;
 }
 
 /* Texte défilant */
 .messagedefilant {
-  /* display: block; */
-  /* margin: 40px auto; */
-  /* padding: 0; */
-  /* overflow: hidden; */
-  /* position: relative; */
-  height: 545px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: calc(75vh);
 }
 
 .messagedefilant div {
   position: absolute;
-  /* min-width: 100%;  */
-  /* au minimum la largeur du conteneur */
 }
 
 .messagedefilant div span,
 .messagedefilant div:after {
   font-family: Big Shoulders Display;
-  font-size: 480px;
+  font-size: calc(50vh);
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
