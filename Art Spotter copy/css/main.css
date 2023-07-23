@@ -13,9 +13,11 @@ li {
 ul {
   margin: unset;
 }
+
 header {
   position: relative;
 }
+/* Hero background */
 .hero-image {
   position: absolute;
   border-radius: 48px;
@@ -36,6 +38,7 @@ header {
   image-rendering: auto;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -49,6 +52,11 @@ header {
   transform: scale(1.2);
 }
 
+/* Menu */
+.overlay { 
+  z-index: 1;
+  position: sticky;
+}
 #menu-overlay {
   background-color: #fffc;
   inset: 0;
@@ -126,7 +134,7 @@ header {
 }
 
 #menu-main.open-animation {
-  transform: translateY(-642px);
+  transform: translateY(-700px);
   animation: translateDownMenu 500ms ease-out;
   animation-fill-mode: forwards;
 }
@@ -138,7 +146,7 @@ header {
 
 @keyframes translateDownMenu {
   0% {
-    transform: translateY(-642px);
+    transform: translateY(-700px);
   }
   100% {
     transform: translateY(0px);
@@ -151,7 +159,7 @@ header {
   align-items: center;
   overflow: hidden;
   position: relative;
-  height: calc(75vh);
+  height: 75vh;
 }
 
 .messagedefilant div {
@@ -161,7 +169,7 @@ header {
 .messagedefilant div span,
 .messagedefilant div:after {
   font-family: Big Shoulders Display;
-  font-size: calc(50vh);
+  font-size: 50vh;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
