@@ -1,5 +1,17 @@
-section {
-  margin: 30px;
+body {
+  margin: unset;
+  padding: 30px;
+  font-family: Alata;
+  font-size: 24px;
+}
+a {
+  text-decoration: unset;
+}
+li {
+  list-style: none;
+}
+ul {
+  margin: unset;
 }
 header {
   position: relative;
@@ -30,10 +42,107 @@ header {
   padding: 24px;
 }
 .navbar a {
-  font-family: Alata;
-  font-size: 24px;
   color: #fff;
-  text-decoration: unset;
+  transition: transform 300ms;
+}
+.navbar a:hover {
+  transform: scale(1.2);
+}
+
+#menu-overlay {
+  background-color: #fffc;
+  inset: 0;
+  position: fixed;
+  width: 0;
+  height: 0;
+}
+#menu-overlay.open-animation {
+  animation: fadeInOverlay 500ms ease-out;
+  animation-fill-mode: forwards;
+}
+#menu-overlay.close-animation {
+  animation: fadeInOverlay 500ms ease-out;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInOverlay {
+  0% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+#menu-main {
+  left: 24px;
+  position: fixed;
+  right: 24px;
+  background-color: #fff;
+  border-radius: 0px 0px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 24px 96px;
+  font-size: 54px;
+  transform: translateY(-700px);
+}
+#menu-main li a {
+  color: #333333;
+}
+#menu-main li {
+  transition: transform 300ms;
+}
+#menu-main li:hover {
+  transform: scale(1.2);
+}
+.close {
+  align-self: flex-end;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.line {
+  background-color: #333333;
+  border-radius: 8.33333% / 100%;
+  height: 2px;
+  width: 24px;
+  will-change: transform;
+}
+.close-left {
+  transform: rotate(-45deg);
+  transform-origin: 50% 0% 0px;
+}
+.close-right {
+  transform: rotate(45deg);
+  transform-origin: 60% 50% 0px;
+}
+
+#menu-main.open-animation {
+  transform: translateY(-642px);
+  animation: translateDownMenu 500ms ease-out;
+  animation-fill-mode: forwards;
+}
+#menu-main.close-animation {
+  animation: translateDownMenu 500ms ease-out;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+@keyframes translateDownMenu {
+  0% {
+    transform: translateY(-642px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* Texte défilant */
