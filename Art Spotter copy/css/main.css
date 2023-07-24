@@ -4,8 +4,24 @@ body {
   font-family: Alata;
   font-size: 24px;
 }
+h2 {
+  font-family: Big Shoulders Display;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333333;
+  font-size: 60px;
+  white-space: nowrap;
+  margin: unset;
+}
+p {
+  color: #666666;
+  font-size: 20px;
+  font-weight: 400;
+  margin: unset;
+}
 a {
   text-decoration: unset;
+  color: #333333;
 }
 li {
   list-style: none;
@@ -15,8 +31,22 @@ ul {
 }
 
 header {
+  height: 100%;
+  width: 100%;
   position: relative;
+  animation: growIn 600ms ease-out 1s;
+  animation-fill-mode: forwards;
 }
+
+@keyframes growIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 /* Hero background */
 .hero-image {
   position: absolute;
@@ -53,7 +83,7 @@ header {
 }
 
 /* Menu */
-.overlay { 
+.overlay {
   z-index: 1;
   position: sticky;
 }
@@ -122,7 +152,6 @@ header {
   border-radius: 8.33333% / 100%;
   height: 2px;
   width: 24px;
-  will-change: transform;
 }
 .close-left {
   transform: rotate(-45deg);
@@ -169,10 +198,10 @@ header {
 .messagedefilant div span,
 .messagedefilant div:after {
   font-family: Big Shoulders Display;
-  font-size: 50vh;
   font-weight: 700;
-  text-transform: uppercase;
+  font-size: 50vh;
   color: #fff;
+  text-transform: uppercase;
   margin: unset;
   position: relative;
   display: inline-block;
@@ -208,4 +237,179 @@ header {
   100% {
     margin-left: 0%;
   }
+}
+
+/* About */
+.about {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1344px;
+  padding: 200px 24px 400px;
+  max-width: 810px;
+  margin: auto;
+}
+.about-left {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 24px;
+  top: 120px;
+}
+.about-left-img-container {
+  aspect-ratio: 1 / 1;
+  width: 120px;
+  height: 120px;
+  border-radius: 48px;
+}
+
+.about-left-img-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-position: center;
+  object-fit: cover;
+}
+
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  justify-content: center;
+}
+
+.button-find-me-container {
+  width: 100%;
+}
+.button-find-me {
+  border: 1px solid #333333;
+  height: 100%;
+  width: fit-content;
+  opacity: 1;
+  border-radius: 48px;
+  padding: 10px 10px 10px 75px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#find-me-svg {
+  background-color: #333333;
+  border-radius: 100%;
+  width: 72px;
+  height: 72px;
+  position: relative;
+  transform: translateX(100px) translatey(-100px);
+}
+#find-me-svg svg {
+  height: 40px;
+  left: calc(50.00000000000002% - 40px / 2);
+  position: absolute;
+  top: calc(50.00000000000002% - 40px / 2);
+  width: 40px;
+  fill: rgb(255, 255, 255);
+}
+
+.button-find-me:hover #find-me-svg {
+  animation: transformSvg 600ms ease;
+  animation-fill-mode: forwards;
+}
+#find-me-svg.mouseleave-animation {
+  animation: transformSvg 600ms ease;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+@keyframes transformSvg {
+  0% {
+    transform: translateX(100px) translateY(-100px);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(-45deg);
+  }
+}
+
+.button-find-me:hover #find-me-text {
+  animation: transformA 600ms ease;
+  animation-fill-mode: forwards;
+}
+#find-me-text.mouseleave-animation {
+  animation: transformA 600ms ease;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+#find-me {
+  margin: auto;
+  /* svg to clip-path > https://www.plantcss.com/ */
+  clip-path: polygon(
+    0px calc(50% - 1px),
+    0px calc(50% - 1px),
+    0.6282381px calc(50% - 8.7858571px),
+    2.4470688px calc(50% - 16.1717248px),
+    5.3576667px calc(50% - 23.0587777px),
+    9.2612064px calc(50% - 29.3481904px),
+    14.0588625px calc(50% - 34.9411375px),
+    19.6518096px calc(50% - 39.7387936px),
+    25.9412223px calc(50% - 43.6423333px),
+    32.8282752px calc(50% - 46.5529312px),
+    40.2141429px calc(50% - 48.3717619px),
+    48px calc(50% - 49px),
+    calc(100% - 48px) 0px,
+    calc(100% - 48px) 0px,
+    calc(100% - 40.21407px) 0.6282381px,
+    calc(100% - 32.82816px) 2.4470688px,
+    calc(100% - 25.94109px) 5.3576667px,
+    calc(100% - 19.65168px) 9.2612064px,
+    calc(100% - 14.05875px) 14.0588625px,
+    calc(100% - 9.26112px) 19.6518096px,
+    calc(100% - 5.35761px) 25.9412223px,
+    calc(100% - 2.44704px) 32.8282752px,
+    calc(100% - 0.62823000000003px) 40.2141429px,
+    calc(100% - 0px) 48px,
+    calc(100% - 0px) calc(50% - -1px),
+    calc(100% - 0px) calc(50% - -1px),
+    calc(100% - 0.62822999999997px) calc(50% - -8.7858571px),
+    calc(100% - 2.44704px) calc(50% - -16.1717248px),
+    calc(100% - 5.35761px) calc(50% - -23.0587777px),
+    calc(100% - 9.26112px) calc(50% - -29.3481904px),
+    calc(100% - 14.05875px) calc(50% - -34.9411375px),
+    calc(100% - 19.65168px) calc(50% - -39.7387936px),
+    calc(100% - 25.94109px) calc(50% - -43.6423333px),
+    calc(100% - 32.82816px) calc(50% - -46.5529312px),
+    calc(100% - 40.21407px) calc(50% - -48.3717619px),
+    calc(100% - 48px) calc(50% - -49px),
+    48px calc(100% - 0px),
+    48px calc(100% - 0px),
+    40.2141429px calc(100% - 0.62823809999999px),
+    32.8282752px calc(100% - 2.4470688px),
+    25.9412223px calc(100% - 5.3576667px),
+    19.6518096px calc(100% - 9.2612064px),
+    14.0588625px calc(100% - 14.0588625px),
+    9.2612064px calc(100% - 19.6518096px),
+    5.3576667px calc(100% - 25.9412223px),
+    2.4470688px calc(100% - 32.8282752px),
+    0.6282381px calc(100% - 40.2141429px),
+    7.9466519585021e-31px calc(100% - 48px),
+    0px calc(50% - 1px)
+  );
+}
+
+@keyframes transformA {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-30px);
+  }
+}
+
+/* Lastest */
+.lastest-message span,
+.lastest-message div::after {
+  color: #333333 !important;
+  font-size: 180px !important;
 }
