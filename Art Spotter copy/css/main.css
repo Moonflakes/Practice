@@ -202,11 +202,7 @@ header {
   font-size: 50vh;
   color: #fff;
   text-transform: uppercase;
-  margin: unset;
-  position: relative;
-  display: inline-block;
   white-space: nowrap;
-  top: 0;
 }
 
 .messagedefilant div span {
@@ -246,8 +242,7 @@ header {
   align-items: flex-start;
   justify-content: center;
   gap: 48px;
-  max-width: 1344px;
-  padding: 200px 24px 400px;
+  padding: 200px 24px;
   max-width: 810px;
   margin: auto;
 }
@@ -282,6 +277,7 @@ header {
   justify-content: center;
 }
 
+/* Button find me */
 .button-find-me-container {
   width: 100%;
 }
@@ -289,7 +285,6 @@ header {
   border: 1px solid #333333;
   height: 100%;
   width: fit-content;
-  opacity: 1;
   border-radius: 48px;
   padding: 10px 10px 10px 75px;
   display: flex;
@@ -297,28 +292,30 @@ header {
   cursor: pointer;
 }
 
-#find-me-svg {
+#arrow-svg {
   background-color: #333333;
   border-radius: 100%;
   width: 72px;
   height: 72px;
   position: relative;
+}
+.arrow-translation {
   transform: translateX(100px) translatey(-100px);
 }
-#find-me-svg svg {
+#arrow-svg svg {
   height: 40px;
-  left: calc(50.00000000000002% - 40px / 2);
+  left: calc(50% - 40px / 2);
   position: absolute;
-  top: calc(50.00000000000002% - 40px / 2);
+  top: calc(50% - 40px / 2);
   width: 40px;
   fill: rgb(255, 255, 255);
 }
 
-.button-find-me:hover #find-me-svg {
+.button-find-me:hover #arrow-svg {
   animation: transformSvg 600ms ease;
   animation-fill-mode: forwards;
 }
-#find-me-svg.mouseleave-animation {
+#arrow-svg.mouseleave-animation {
   animation: transformSvg 600ms ease;
   animation-direction: reverse;
   animation-fill-mode: forwards;
@@ -344,58 +341,7 @@ header {
 }
 #find-me {
   margin: auto;
-  /* svg to clip-path > https://www.plantcss.com/ */
-  clip-path: polygon(
-    0px calc(50% - 1px),
-    0px calc(50% - 1px),
-    0.6282381px calc(50% - 8.7858571px),
-    2.4470688px calc(50% - 16.1717248px),
-    5.3576667px calc(50% - 23.0587777px),
-    9.2612064px calc(50% - 29.3481904px),
-    14.0588625px calc(50% - 34.9411375px),
-    19.6518096px calc(50% - 39.7387936px),
-    25.9412223px calc(50% - 43.6423333px),
-    32.8282752px calc(50% - 46.5529312px),
-    40.2141429px calc(50% - 48.3717619px),
-    48px calc(50% - 49px),
-    calc(100% - 48px) 0px,
-    calc(100% - 48px) 0px,
-    calc(100% - 40.21407px) 0.6282381px,
-    calc(100% - 32.82816px) 2.4470688px,
-    calc(100% - 25.94109px) 5.3576667px,
-    calc(100% - 19.65168px) 9.2612064px,
-    calc(100% - 14.05875px) 14.0588625px,
-    calc(100% - 9.26112px) 19.6518096px,
-    calc(100% - 5.35761px) 25.9412223px,
-    calc(100% - 2.44704px) 32.8282752px,
-    calc(100% - 0.62823000000003px) 40.2141429px,
-    calc(100% - 0px) 48px,
-    calc(100% - 0px) calc(50% - -1px),
-    calc(100% - 0px) calc(50% - -1px),
-    calc(100% - 0.62822999999997px) calc(50% - -8.7858571px),
-    calc(100% - 2.44704px) calc(50% - -16.1717248px),
-    calc(100% - 5.35761px) calc(50% - -23.0587777px),
-    calc(100% - 9.26112px) calc(50% - -29.3481904px),
-    calc(100% - 14.05875px) calc(50% - -34.9411375px),
-    calc(100% - 19.65168px) calc(50% - -39.7387936px),
-    calc(100% - 25.94109px) calc(50% - -43.6423333px),
-    calc(100% - 32.82816px) calc(50% - -46.5529312px),
-    calc(100% - 40.21407px) calc(50% - -48.3717619px),
-    calc(100% - 48px) calc(50% - -49px),
-    48px calc(100% - 0px),
-    48px calc(100% - 0px),
-    40.2141429px calc(100% - 0.62823809999999px),
-    32.8282752px calc(100% - 2.4470688px),
-    25.9412223px calc(100% - 5.3576667px),
-    19.6518096px calc(100% - 9.2612064px),
-    14.0588625px calc(100% - 14.0588625px),
-    9.2612064px calc(100% - 19.6518096px),
-    5.3576667px calc(100% - 25.9412223px),
-    2.4470688px calc(100% - 32.8282752px),
-    0.6282381px calc(100% - 40.2141429px),
-    7.9466519585021e-31px calc(100% - 48px),
-    0px calc(50% - 1px)
-  );
+  overflow: hidden;
 }
 
 @keyframes transformA {
@@ -408,8 +354,64 @@ header {
 }
 
 /* Lastest */
+.lastest-message {
+  height: 50vh !important;
+}
 .lastest-message span,
 .lastest-message div::after {
   color: #333333 !important;
   font-size: 180px !important;
+}
+
+.card-container {
+  padding-top: unset !important;
+  gap: 24px !important;
+}
+.card {
+  width: 238px;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 600ms;
+}
+.card:hover {
+  transform: translateY(20px) scale(1.1);
+}
+.card-image {
+  aspect-ratio: 1 / 1;
+  width: 238px;
+  height: 238px;
+  border-radius: 48px;
+  overflow: hidden;
+}
+.card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-position: center;
+  object-fit: cover;
+}
+.last-arrow-translation {
+  transform: translateX(338px) translateY(-338px);
+}
+.card-city {
+  color: #cccccc;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.card:hover .last-arrow-translation {
+  animation: transformSvg2 600ms ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes transformSvg2 {
+  0% {
+    transform: translateX(338px) translateY(-338px);
+  }
+  100% {
+    transform: translateX(156px) translateY(-228px) rotate(-45deg);
+  }
 }
