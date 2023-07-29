@@ -290,6 +290,8 @@ header {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin: auto;
+  overflow: hidden;
 }
 
 #arrow-svg {
@@ -309,48 +311,6 @@ header {
   top: calc(50% - 40px / 2);
   width: 40px;
   fill: rgb(255, 255, 255);
-}
-
-.button-find-me:hover #arrow-svg {
-  animation: transformSvg 600ms ease;
-  animation-fill-mode: forwards;
-}
-#arrow-svg.mouseleave-animation {
-  animation: transformSvg 600ms ease;
-  animation-direction: reverse;
-  animation-fill-mode: forwards;
-}
-
-@keyframes transformSvg {
-  0% {
-    transform: translateX(100px) translateY(-100px);
-  }
-  100% {
-    transform: translateX(0px) translateY(0px) rotate(-45deg);
-  }
-}
-
-.button-find-me:hover #find-me-text {
-  animation: transformA 600ms ease;
-  animation-fill-mode: forwards;
-}
-#find-me-text.mouseleave-animation {
-  animation: transformA 600ms ease;
-  animation-direction: reverse;
-  animation-fill-mode: forwards;
-}
-#find-me {
-  margin: auto;
-  overflow: hidden;
-}
-
-@keyframes transformA {
-  0% {
-    transform: translateX(0px);
-  }
-  100% {
-    transform: translateX(-30px);
-  }
 }
 
 /* Lastest */
