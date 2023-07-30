@@ -87,37 +87,24 @@ header {
   z-index: 1;
   position: sticky;
 }
-#menu-overlay {
+.menu-overlay {
   background-color: #fffc;
   inset: 0;
   position: fixed;
+  transition: all 500ms ease-out; /* transition all properties from close to open and revert with JS toggle */
+}
+.menu-overlay-close { /* transition properties */
+  opacity: 0;
   width: 0;
   height: 0;
 }
-#menu-overlay.open-animation {
-  animation: fadeInOverlay 500ms ease-out;
-  animation-fill-mode: forwards;
-}
-#menu-overlay.close-animation {
-  animation: fadeInOverlay 500ms ease-out;
-  animation-direction: reverse;
-  animation-fill-mode: forwards;
+.menu-overlay-open { /* transition properties */
+  opacity: 1;
+  width: inherit;
+  height: inherit;
 }
 
-@keyframes fadeInOverlay {
-  0% {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  100% {
-    opacity: 1;
-    width: inherit;
-    height: inherit;
-  }
-}
-
-#menu-main {
+.menu-main {
   left: 24px;
   position: fixed;
   right: 24px;
@@ -129,18 +116,24 @@ header {
   gap: 48px;
   padding: 48px 24px 96px;
   font-size: 54px;
+  transition: all 500ms ease-out; /* transition all properties from close to open and revert with JS toggle */
+}
+.menu-main-close { /* transition properties */
   transform: translateY(-700px);
 }
-#menu-main li a {
+.menu-main-open { /* transition properties */
+  transform: translateY(0px);
+}
+.menu-main li a {
   color: #333333;
 }
-#menu-main li {
+.menu-main li {
   transition: transform 300ms;
 }
-#menu-main li:hover {
+.menu-main li:hover {
   transform: scale(1.2);
 }
-.close {
+.close-menu-button {
   align-self: flex-end;
   height: 30px;
   display: flex;
@@ -160,26 +153,6 @@ header {
 .close-right {
   transform: rotate(45deg);
   transform-origin: 60% 50% 0px;
-}
-
-#menu-main.open-animation {
-  transform: translateY(-700px);
-  animation: translateDownMenu 500ms ease-out;
-  animation-fill-mode: forwards;
-}
-#menu-main.close-animation {
-  animation: translateDownMenu 500ms ease-out;
-  animation-direction: reverse;
-  animation-fill-mode: forwards;
-}
-
-@keyframes translateDownMenu {
-  0% {
-    transform: translateY(-700px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
 }
 
 /* Texte défilant */
@@ -206,7 +179,7 @@ header {
 }
 
 .messagedefilant div span {
-  animation: defilement 20s infinite linear;
+  animation: defilementSpanText 20s infinite linear;
 }
 
 .messagedefilant div:after {
@@ -214,10 +187,10 @@ header {
   top: 0;
   left: 0;
   content: attr(data-text);
-  animation: defilement2 20s infinite linear;
+  animation: defilementAfterText 20s infinite linear;
 }
 
-@keyframes defilement {
+@keyframes defilementSpanText {
   0% {
     margin-left: 0;
   }
@@ -226,7 +199,7 @@ header {
   }
 }
 
-@keyframes defilement2 {
+@keyframes defilementAfterText {
   0% {
     margin-left: 100%;
   }
@@ -294,7 +267,7 @@ header {
   overflow: hidden;
 }
 
-#arrow-svg {
+.arrow-svg {
   background-color: #333333;
   border-radius: 100%;
   width: 72px;
@@ -304,7 +277,7 @@ header {
 .arrow-translation {
   transform: translateX(100px) translatey(-100px);
 }
-#arrow-svg svg {
+.arrow-svg svg {
   height: 40px;
   left: calc(50% - 40px / 2);
   position: absolute;

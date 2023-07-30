@@ -1,100 +1,51 @@
-document
-  .getElementById("click-menu")
-  .addEventListener("click", () => controlMenuAnimation("open"));
+const menuOpenButton = document.querySelector(".open-menu-button");
+const menuCloseButton = document.querySelector(".close-menu-button");
 
-document
-  .getElementById("click-close-menu")
-  .addEventListener("click", () => controlMenuAnimation("close"));
+menuOpenButton.addEventListener("click", controlMenuAnimation);
+menuCloseButton.addEventListener("click", controlMenuAnimation);
 
-function controlMenuAnimation(status) {
-  let toRemove = "";
-  let toAdd = "";
-  switch (status) {
-    case "close":
-      toRemove = "open-animation";
-      toAdd = "close-animation";
-      break;
-    case "open":
-      toRemove = "close-animation";
-      toAdd = "open-animation";
-      break;
-  }
-  const menu = document.querySelector("#menu-main");
-  const background = document.querySelector("#menu-overlay");
-  menu.classList.remove(toRemove);
-  background.classList.remove(toRemove);
-  setTimeout(() => {
-    menu.classList.add(toAdd);
-    background.classList.add(toAdd);
-  }, 0);
+function controlMenuAnimation() {
+  const menu = document.querySelector(".menu-main");
+  const background = document.querySelector(".menu-overlay");
+  ["close", "open"].map((status) => {
+    // remove or add classes status
+    menu.classList.toggle(`menu-main-${status}`);
+    background.classList.toggle(`menu-overlay-${status}`);
+  });
 }
 
-const button = document.querySelector("#find-me");
-const text = document.querySelector("#find-me-text");
-const svg = document.querySelector("#arrow-svg");
+const findMeButton = document.querySelector(".button-find-me");
+const text = document.querySelector(".find-me-text");
+const svg = document.querySelector(".arrow-svg");
 
-button.addEventListener("mouseenter", () => {
+findMeButton.addEventListener("mouseenter", controlFindMeButtonAnimation);
+findMeButton.addEventListener("mouseleave", controlFindMeButtonAnimation);
+
+function controlFindMeButtonAnimation(mouseEvent) {
+  const eventType = mouseEvent.type;
+
   // get current positions
+  // initial position or position during animation
   const currentSvgPosition = window.getComputedStyle(svg).transform;
   const currentTextPosition = window.getComputedStyle(text).transform;
 
-  text.animate(
-    [
-      {
-        // from the current text's position in animation (initial position on mouse enter 0px => translateX(0px))
-        transform: currentTextPosition,
-      },
-      {
-        // to
-        transform: "translateX(-30px)",
-      },
-    ],
-    { duration: 400, fill: "forwards" }
-  );
-  svg.animate(
-    [
-      {
-        // from the current svg's position in animation (initial position on mouse enter = transform: translateX(100px) translateY(-100px);)
-        transform: currentSvgPosition,
-      },
-      {
-        // to translateX(0px) translateY(0px) rotate(-45deg) in matrix
-        transform: "matrix(0.707107, -0.707107, 0.707107, 0.707107, 0, 0)",
-      },
-    ],
-    { duration: 400, fill: "forwards" }
-  );
-});
+  // set target positions according to the eventType mouseenter or mouseleave
+  let targetSvgPosition = "";
+  let targetTextPosition = "";
+  switch (eventType) {
+    case "mouseenter":
+      targetSvgPosition = "translateX(0px) translateY(0px) rotate(-45deg)";
+      targetTextPosition = "translateX(-30px)";
+      break;
+    case "mouseleave":
+      targetSvgPosition = "translateX(100px) translateY(-100px)";
+      targetTextPosition = "translateX(0px)";
+      break;
+  }
+  animateElement(text, currentTextPosition, targetTextPosition, { duration: 400, fill: "forwards" });
+  animateElement(svg, currentSvgPosition, targetSvgPosition, { duration: 400, fill: "forwards" });
+}
 
-button.addEventListener("mouseleave", () => {
-  // get current positions
-  const currentSvgPosition = window.getComputedStyle(svg).transform;
-  const currentTextPosition = window.getComputedStyle(text).transform;
-
-  text.animate(
-    [
-      {
-        // from the current text's position in animation (initial position on mouse leave -30px => translateX(-30px))
-        transform: currentTextPosition,
-      },
-      {
-        // to
-        transform: "translateX(0px)",
-      },
-    ],
-    { duration: 400, fill: "forwards" }
-  );
-  svg.animate(
-    [
-      {
-        // from the current svg's position in animation (initial position on mouse leave transform: translateX(0px) translateY(0px) rotate(-45deg))
-        transform: currentSvgPosition,
-      },
-      {
-        // to translateX(100px) translateY(-100px) in matrix
-        transform: `matrix(1, 0, 0, 1, 100, -100)`,
-      },
-    ],
-    { duration: 400, fill: "forwards" }
-  );
-});
+const animateElement = (element, fromValue, toValue, options) => {
+  element.animate([{ transform: fromValue }, { transform: toValue }], options);
+};
