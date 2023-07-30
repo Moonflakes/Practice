@@ -93,12 +93,14 @@ header {
   position: fixed;
   transition: all 500ms ease-out; /* transition all properties from close to open and revert with JS toggle */
 }
-.menu-overlay-close { /* transition properties */
+.menu-overlay-close {
+  /* transition properties */
   opacity: 0;
   width: 0;
   height: 0;
 }
-.menu-overlay-open { /* transition properties */
+.menu-overlay-open {
+  /* transition properties */
   opacity: 1;
   width: inherit;
   height: inherit;
@@ -118,10 +120,12 @@ header {
   font-size: 54px;
   transition: all 500ms ease-out; /* transition all properties from close to open and revert with JS toggle */
 }
-.menu-main-close { /* transition properties */
+.menu-main-close {
+  /* transition properties */
   transform: translateY(-700px);
 }
-.menu-main-open { /* transition properties */
+.menu-main-open {
+  /* transition properties */
   transform: translateY(0px);
 }
 .menu-main li a {
@@ -251,10 +255,10 @@ header {
 }
 
 /* Button find me */
-.button-find-me-container {
+.button-container {
   width: 100%;
 }
-.button-find-me {
+.button {
   border: 1px solid #333333;
   height: 100%;
   width: fit-content;
@@ -267,17 +271,17 @@ header {
   overflow: hidden;
 }
 
-.arrow-svg {
+.button-arrow {
   background-color: #333333;
   border-radius: 100%;
   width: 72px;
   height: 72px;
   position: relative;
 }
-.arrow-translation {
+.button-arrow-translation {
   transform: translateX(100px) translatey(-100px);
 }
-.arrow-svg svg {
+.button-arrow svg {
   height: 40px;
   left: calc(50% - 40px / 2);
   position: absolute;
@@ -296,11 +300,11 @@ header {
   font-size: 180px !important;
 }
 
-.card-container {
+.card-button-container {
   padding-top: unset !important;
   gap: 24px !important;
 }
-.card {
+.card-button {
   width: 238px;
   display: flex;
   gap: 24px;
@@ -308,17 +312,17 @@ header {
   cursor: pointer;
   transition: transform 600ms;
 }
-.card:hover {
+.card-button:hover {
   transform: translateY(20px) scale(1.1);
 }
-.card-image {
+.card-button-image {
   aspect-ratio: 1 / 1;
   width: 238px;
   height: 238px;
   border-radius: 48px;
   overflow: hidden;
 }
-.card-image img {
+.card-button-image img {
   display: block;
   width: 100%;
   height: 100%;
@@ -326,25 +330,11 @@ header {
   object-position: center;
   object-fit: cover;
 }
-.last-arrow-translation {
+.card-button-arrow-translation {
   transform: translateX(338px) translateY(-338px);
 }
-.card-city {
+.card-button-city {
   color: #cccccc;
   font-size: 16px;
   margin-top: 10px;
-}
-
-.card:hover .last-arrow-translation {
-  animation: transformSvg2 600ms ease;
-  animation-fill-mode: forwards;
-}
-
-@keyframes transformSvg2 {
-  0% {
-    transform: translateX(338px) translateY(-338px);
-  }
-  100% {
-    transform: translateX(156px) translateY(-228px) rotate(-45deg);
-  }
 }
