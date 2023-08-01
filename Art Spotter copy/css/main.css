@@ -160,33 +160,55 @@ header {
 }
 
 /* Texte défilant */
+.title-big-container {
+  /* hauteur de la div container > font-size */
+  height: 75vh;
+}
+.title-big-container .text,
+.title-big-container .after-content-div:after {
+  /* font-size du message et du after content */
+  font-size: 50vh;
+}
+.title-medium-container {
+  height: 50vh;
+}
+.title-medium-container .text,
+.title-medium-container .after-content-div:after {
+  font-size: 180px;
+}
+.title-white,
+.title-white:after {
+  color: #fff;
+}
+.title-dark,
+.title-dark:after {
+  color: #333333;
+}
+
 .messagedefilant {
   display: flex;
   align-items: center;
   overflow: hidden;
   position: relative;
-  height: 75vh;
 }
 
-.messagedefilant div {
+.messagedefilant .after-content-div {
   position: absolute;
 }
 
-.messagedefilant div span,
-.messagedefilant div:after {
+.messagedefilant .after-content-div .text,
+.messagedefilant .after-content-div:after {
   font-family: Big Shoulders Display;
   font-weight: 700;
-  font-size: 50vh;
-  color: #fff;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.messagedefilant div span {
+.messagedefilant .after-content-div .text {
   animation: defilementSpanText 20s infinite linear;
 }
 
-.messagedefilant div:after {
+.messagedefilant .after-content-div:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -269,6 +291,7 @@ header {
   cursor: pointer;
   margin: auto;
   overflow: hidden;
+  background-color: white;
 }
 
 .button-arrow {
@@ -291,15 +314,6 @@ header {
 }
 
 /* Lastest */
-.lastest-message {
-  height: 50vh !important;
-}
-.lastest-message span,
-.lastest-message div::after {
-  color: #333333 !important;
-  font-size: 180px !important;
-}
-
 .card-button-container {
   padding-top: unset !important;
   gap: 24px !important;
@@ -337,4 +351,12 @@ header {
   color: #cccccc;
   font-size: 16px;
   margin-top: 10px;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  animation: growIn 600ms ease-out 1s;
+  animation-fill-mode: forwards;
 }
